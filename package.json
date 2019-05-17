@@ -12,7 +12,8 @@
   "dependencies": {
     "@material/list": "^0.35.0",
     "@material/mwc-icon": "^0.5.0",
-    "lit-element": "^2.0.1"
+    "lit-element": "^2.0.1",
+    "lit-html": "^1.0.0"
   },
   "devDependencies": {
     "file-loader": "^3.0.1",

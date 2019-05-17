@@ -14,9 +14,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import {LitElement, html} from 'lit-element/lit-element.js';
+import {LitElement} from 'lit-element/lit-element.js';
 import {style} from './mwc-list-item-css.js';
 import '@material/mwc-icon/mwc-icon-font.js';
+import {html} from 'lit-html';
 
 function renderAttributes(element, attrInfo) {
   for (const a in attrInfo) {
@@ -60,10 +61,24 @@ export class ListItem extends LitElement {
     return html`
       ${this.renderStyle()}
       <div class="mdc-list-item" role="menuitem" tabindex="0" aria-disabled="${disabled}">
-        ${icon ? html`<span class="material-icons">${icon}</span>` : ''}
-        ${label || ''}
+        ${this.printIcon(icon)}
+        ${this.printLabel()}
         <slot></slot>
       </div>`;
+  }
+
+  printLabel(label) {
+    if(label) {
+      return label;
+    }
+    return '';
+  }
+
+  printIcon(icon) {
+    if(icon) {
+      return html`<span class="material-icons">${icon}</span>`;
+    }
+    return html``;
   }
 
   firstUpdated() {
